@@ -7,7 +7,9 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 import pytest
 import glob
 import random
-from pathlib import Path
+from typing import List, Union
+from pathlib import Path, PosixPath
+
 from starlette.testclient import TestClient
 
 # ---- cell-instance-segmentation-_API modules ----
@@ -31,4 +33,28 @@ def test_client():
 
 @pytest.fixture
 def image_path():
-    return Path(os.path.join(os.path.dirname(__file__), 'api', 'images')) 
+    return Path(os.path.join(os.path.dirname(__file__), 'images'))
+
+@pytest.fixture
+def generate_multipartformdata(input: Union[Path, List[Path]]) -> List:
+    """Generate multipart/form-data from input list"""
+    files = []
+
+    if type(input) == PosixPath:
+        filename = input.name
+        mime = f'image/{input.suffix[1:]}'
+        files.append((filename, input.open(), mime))
+
+    else:
+        
+        for fp in input: 
+            filename = fp.name
+            mime = f'image/{fp.suffix[1:]}'
+            files.append((filename, fp.open(), mime))
+
+    return files
+
+@pytest.fixture
+def fake_txt():
+    fp = Path('fake.txt')
+    return (fp.name, fp.open(), 'text/plain')
