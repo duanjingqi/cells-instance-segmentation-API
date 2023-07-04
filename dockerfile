@@ -24,10 +24,4 @@ pip3 install -r ${APP_PATH}/requirements.txt'
 ENV PATH '${PATH}:/usr/local/bin'
 ENV PYTHONPATH '${PYTHONPATH}:${APP_PATH}/api;${APP_PATH}/unet;${APP_PATH}/tests;${APP_PATH}'
 
-# ENV PYTHONPATH=/api
-# WORKDIR /api
-
-# EXPOSE 8000
-
-# ENTRYPOINT ['uvicorn']
-# CMD ['api.main:app', '--host', '0.0.0.0']
+EXPOSE 8000
