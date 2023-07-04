@@ -1,4 +1,8 @@
-FROM ubuntu:rolling
+FROM alpine:3.17
+
+ENV PATH '${PATH}:/usr/local/bin'
+
+ENV PYTHON_VERSION 3.9.17
 
 ENV PRJ_PATH=/Projects
 WORKDIR $PRJ_PATH
@@ -8,9 +12,7 @@ RUN /bin/bash -c 'mkdir ${APP_PATH}'
 
 COPY . ${APP_PATH}
 
-RUN /bin/bash -c 'apt-get update && \
-apt-get install python3.9 python3-pip -y && \
-pip3 install -r ${APP_PATH}/requirements.txt'
+RUN /bin/bash -c 'pip3 install -r ${APP_PATH}/requirements.txt'
 
 ENV PYTHONPATH '${PYTHONPATH}:${APP_PATH}/api;${APP_PATH}/unet;${APP_PATH}/tests;${APP_PATH}'
 
