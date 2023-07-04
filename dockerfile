@@ -9,7 +9,7 @@ RUN /bin/bash -c 'mkdir ${APP_PATH}'
 COPY . ${APP_PATH}
 
 RUN /bin/bash -c 'apt-get update && \
-apt-get install python3-dev python3-pip -y && \
+apt-get install python3.9 python3-pip -y && \
 pip3 install -r ${APP_PATH}/requirements.txt'
 
 ENV PYTHONPATH '${PYTHONPATH}:${APP_PATH}/api;${APP_PATH}/unet;${APP_PATH}/tests;${APP_PATH}'
