@@ -24,4 +24,4 @@ pip3 install -r ${APP_PATH}/requirements.txt'
 ENV PATH '${PATH}:/usr/local/bin'
 ENV PYTHONPATH '${PYTHONPATH}:${APP_PATH}/api;${APP_PATH}/unet;${APP_PATH}/tests;${APP_PATH}'
 
-EXPOSE 8000
+EXPOSE 3000
