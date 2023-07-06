@@ -13,7 +13,7 @@ COPY . ${APP_PATH}
 
 # Install Python3, pip3 and Cell Segger dependencies
 RUN /bin/bash -c 'apt-get update && \
-apt-get install -y python3-dev python3-pip git && \
+apt-get install -y python3-dev python3-pip git apturl && \
 cd /usr/local/bin && \
 ln -s /usr/bin/python3 python && \
 pip3 --no-cache-dir install --upgrade pip && \
