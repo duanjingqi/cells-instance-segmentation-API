@@ -1,6 +1,13 @@
 # Ubuntu system
 FROM ubuntu:latest
 
+RUN /bin/bash -c 'apt-get update && \
+    apt-get install -yq tzdata && \
+    ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata'
+
+ENV TZ='America/Los_Angeles'
+
 # Paths
 ENV PRJ_PATH=/Projects
 WORKDIR $PRJ_PATH
