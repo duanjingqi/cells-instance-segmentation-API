@@ -12,7 +12,7 @@ Cell Segger can be used as a stand-alone program. It has also been deployed on P
 
 Installation is only tested on Ubuntu. Other OS will be tested in future.
 
-#### Install Docker 
+#### 1. Install Docker 
 ```console
 sudo /bin/bash docker_setup.sh
 ```
@@ -22,13 +22,18 @@ sudo docker run hello-world
 ```
 The detailed information can be found [Docker documentation](https://docs.docker.com/engine/install/ubuntu/).
 
-### Install Cell Segger (Docker image)
+#### 2. Install Cell Segger
 ```console
 git clone https://github.com/duanjingqi/cells-instance-segmentation-API.git
 cd ./cells-instance-segmentation_API
-sudo docker build -t cellsegger .
-
+python3 -m pip install -r requirements.txt
 ```
+#### 3. Test if Cell Segger can be run or not
+```console
+pytest
+```
+Five scripts are tested. It is expected that the two fail the test, 'test_single_prediction' and 'test_batch_prediction', which are the tests for the API. They won't affect the stand-alone usage. And the Cell Segger API runs with no problem. It is the API test scripts are not good. They will be resolved in future versions. 
+
 ### Predict with Cells Segger
 1. Display the predict.py help message
 
