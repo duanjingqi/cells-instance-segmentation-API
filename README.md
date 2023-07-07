@@ -27,6 +27,7 @@ The detailed information can be found [Docker documentation](https://docs.docker
 git clone https://github.com/duanjingqi/cells-instance-segmentation-API.git
 cd ./cells-instance-segmentation_API
 python3 -m pip install -r requirements.txt
+echo "export \$SEGGER_DIR=$(pwd)" >> $HOME/.bashrc
 ```
 #### 3. Test if Cell Segger can be run or not
 ```console
